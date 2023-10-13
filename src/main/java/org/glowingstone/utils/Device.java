@@ -11,7 +11,7 @@ import java.nio.file.Path;
 import java.util.Random;
 
 public class Device {
-    public static final Path DEVICE_PATH = Path.of("device.json");
+    public static final Path DEVICE_PATH = Path.of(System.getProperty("user.dir")+ "\\device.json");
     public static String getDevice(){
         try {
             JSONObject deviceOBJ = new JSONObject(Files.readString(DEVICE_PATH));
@@ -23,13 +23,14 @@ public class Device {
             throw new RuntimeException(e);
         }
     }
-    public static boolean check(){
+    public static boolean check() throws IOException {
         File file = new File(String.valueOf(DEVICE_PATH));
         boolean returnvalue = false;
         if (file.exists()) {
             returnvalue = true;
             return returnvalue;
         } else {
+            generate();
             return returnvalue;
         }
     }
@@ -39,8 +40,8 @@ public class Device {
         FileWriter writer = new FileWriter(file);
         JSONObject deviceobj = new JSONObject();
         deviceobj.put("deviceid", generateDeviceid());
-        deviceobj.put("PostSource", "localhost:8080/postclipboard");
-        deviceobj.put("GetSource", "localhost:8080/getclipboard");
+        deviceobj.put("PostSource", "http://localhost:8080/postclipboard");
+        deviceobj.put("GetSource", "http://localhost:8080/getclipboard");
         writer.write(deviceobj.toString());
         writer.close();
     }
