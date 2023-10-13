@@ -1,5 +1,7 @@
 package org.glowingstone;
 
+import org.glowingstone.utils.Device;
+
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
@@ -20,7 +22,7 @@ public class ClipBoardListener extends TimerTask {
 
                 if (clipboardText != null && !clipboardText.equals(previousClipboardContent)) {
                     previousClipboardContent = clipboardText;
-                    System.out.println("剪切板内容: " + clipboardText);
+                    ClipboardDataPoster.Post(clipboardText, Device.getPostApi());
                 }
             } catch (Exception e) {
                 e.printStackTrace();
