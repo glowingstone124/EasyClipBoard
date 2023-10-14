@@ -11,7 +11,7 @@ import java.nio.file.Path;
 import java.util.Random;
 
 public class Device {
-    public static final Path DEVICE_PATH = Path.of(System.getProperty("user.dir")+ "\\device.json");
+    public static final Path DEVICE_PATH = Path.of("device.json");
     public static String getDevice(){
         try {
             JSONObject deviceOBJ = new JSONObject(Files.readString(DEVICE_PATH));
